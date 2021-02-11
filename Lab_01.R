@@ -114,6 +114,9 @@ par(pty='m')
 boxplot(EPI,DALY)
 qqplot(EPI,DALY)
 
+boxplot(AIR_H,AIR_E)
+boxplot(WATER_H,WATER_E)
+
 #Exercise 2- Filtering
 
 t <- is.na(EPI)
@@ -134,10 +137,42 @@ qqline(x)
 stem(E_land)
 plot(ecdf(E_land),vertical=TRUE,do.points=FALSE)
 
+W <- EPI[!No_surface_water]
+No_water <- EPI[!is.na(W)]
+No_water
+summary(No_water)
+hist(No_water)
+
 
 summary(EPI_regions)
 View(EPI_regions)
 EPI_regions
-EPI_South_Asia <- EPI_regions['Europe']
+EPI_South_Asia <- EPI['South_Asia']
 View(EPI_South_Asia)
 help(distribution)
+View(EPI)
+
+#GPW3_GRUMP
+
+GPW <- read.csv(file.choose())
+GPW
+View(GPW)
+
+attach(GPW)
+summary(PopulationPerUnit)
+fivenum(PopulationPerUnit)
+hist(PopulationPerUnit)
+#stem(PopulationPerUnit)
+help("seq")
+hist(PopulationPerUnit, seq(), prob=T)
+lines(density(PopulationPerUnit,na.rm=T, bw = "SJ"))
+rug(PopulationPerUnit)
+plot(ecdf(PopulationPerUnit), do.points=T, verticals = T)
+qqnorm(PopulationPerUnit)
+qqline(PopulationPerUnit)
+qqplot(qt(ppoints(550), df=5), PopulationPerUnit)
+qqline(PopulationPerUnit)
+fivenum(PopulationPerUnit)
+pop <- GPW['PopulationPerUnit']
+p <- pop<119
+View(p)
