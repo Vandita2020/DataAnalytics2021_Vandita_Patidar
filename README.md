@@ -1,6 +1,3 @@
-Data Analytics
+# DataAnalytics2021_Vandita_Patidar
 
-Vandita Patidar
-
-Lab Submissions 2021
-
+Repository for all codes related to Data Analytics course.
